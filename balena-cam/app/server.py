@@ -7,7 +7,7 @@ from aiohttp_basicauth import BasicAuthMiddleware
 
 class CameraDevice():
     def __init__(self):
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture(os.getenv('DEV_VIDEO_INDEX', 0))
         ret, frame = self.cap.read()
         if not ret:
             print('Failed to open default camera. Exiting...')
